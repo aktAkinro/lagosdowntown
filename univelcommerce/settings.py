@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'coreapi',
+    'cloudinary',
 ]
 
 REST_FRAMEWORK = {
