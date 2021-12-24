@@ -43,9 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store',
-    'tags',
+    'account',
     'likes',
-    'core',
+    'tags',
     'rest_framework',
     'drf_yasg',
     'coreapi',
@@ -60,6 +60,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
+
+
 
 ROOT_URLCONF = 'lagosdowntown.urls'
 
@@ -147,3 +156,5 @@ EMAIL_HOST_USER=os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD=os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS=True
 # EMAIL_USE_SSL
+
+AUTH_USER_MODEL = 'core.User'
