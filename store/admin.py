@@ -4,6 +4,7 @@ from django.db.models.query import QuerySet
 from django.utils.html import format_html, urlencode
 from django.urls import reverse
 from . import models
+from .models import Picture
 
 
 class InventoryFilter(admin.SimpleListFilter):
@@ -114,3 +115,7 @@ class OrderAdmin(admin.ModelAdmin):
     autocomplete_fields = ['customer']
     inlines = [OrderItemInline]
     list_display = ['id', 'placed_at', 'customer']
+
+
+
+admin.site.register(Picture)

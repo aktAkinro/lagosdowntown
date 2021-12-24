@@ -7,9 +7,15 @@ from django.core import validators
 from django.core.validators import MinValueValidator
 from django.db.models.deletion import SET_NULL
 from uuid import uuid4
+from django.db import models
+from cloudinary.models import CloudinaryField
 
 
 User = get_user_model()
+
+class Picture(models.Model):
+  image = CloudinaryField('image')
+
 
 
 class Collection(models.Model):
@@ -25,6 +31,7 @@ class Collection(models.Model):
 
 
 class Product(models.Model):
+    image = models.ForeignKey(Picture, blank=True, null=True, on_delete=models.PROTECT)
     title = models.CharField(max_length=255)
     slug = models.SlugField()
     description = models.TextField(null=True, blank=True)
@@ -131,3 +138,5 @@ class CartItem(models.Model):
 
     class Meta:
         unique_together = [['cart', 'product']]
+
+

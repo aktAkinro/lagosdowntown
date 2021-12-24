@@ -14,6 +14,8 @@ from .models import Collection, Product, Cart, CartItem, Customer, Order
 from .serializers import AddCartItemSerializer, CartItemSerializer, CartSerializer, CollectionSerializer, ProductSerializer, UpdateCartItemSerializer, CustomerSerializer, CreateOrderSerializer, UpdateOrderSerializer, OrderSerializer
 from rest_framework.mixins import CreateModelMixin, DestroyModelMixin, RetrieveModelMixin
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
+from django.shortcuts import render
+
 
 
 @swagger_auto_schema(methods=['POST'], request_body=ProductSerializer())
@@ -204,3 +206,8 @@ class OrderViewSet(ModelViewSet):
         customer_id = Customer.objects.only(
             'id').get(user_id=user.id)
         return Order.objects.filter(customer_id=customer_id)
+
+
+
+def index(request):
+    return render(request, 'pictures.html')
